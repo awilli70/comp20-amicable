@@ -21,9 +21,9 @@
         let sumYFactors = yFactors.reduce((a, c) => c + a)
         let outputHTML = ""
         if (sumXFactors === y && sumYFactors === x) {
-            outputHTML += `<p>The numbers ${x} and ${y} are amicable.</p>`
+            outputHTML += `<h2>The numbers ${x} and ${y} are amicable.</h2>`
         } else {
-            outputHTML += `<p>The numbers ${x} and ${y} are not amicable.</p>`
+            outputHTML += `<h2>The numbers ${x} and ${y} are not amicable.</h2>`
         }
         output.innerHTML = outputHTML
     }
