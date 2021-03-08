@@ -5,6 +5,8 @@
 <title>Amicable Numbers</title>
 <link rel="stylesheet" href="style.css">
 <script language="javascript">
+    
+    // Checks if two numbers are amicable, pulling from form data
     function checkAmicable() {
         let output = document.getElementById("output")
         let x = parseInt(document.getElementById("n1").value)
@@ -16,19 +18,17 @@
         let xFactors = factors(x)
         let yFactors= factors(y)
         let sumXFactors = xFactors.reduce((a, c) => c + a)
-        console.log(sumXFactors)
         let sumYFactors = yFactors.reduce((a, c) => c + a)
-        console.log(sumYFactors)
         let outputHTML = ""
         if (sumXFactors === y && sumYFactors === x) {
             outputHTML += `<p>The numbers ${x} and ${y} are amicable.</p>`
         } else {
             outputHTML += `<p>The numbers ${x} and ${y} are not amicable.</p>`
         }
-        console.log(outputHTML)
         output.innerHTML = outputHTML
     }
 
+    // displays an alert showing all factors of two form data nums
     function showFactors() {
         let x = parseInt(document.getElementById("n1").value)
         let y = parseInt(document.getElementById("n2").value)
@@ -44,6 +44,7 @@
         alert(`Factors for ${x} are ${xFactStr} and for ${y} are ${yFactStr}`)
     }
 
+    // takes in a number, returns all factors in an array.
     function factors(val) {
         let valFactors = []
         for (let i = 1; i <= ((val / 2)); i++) {
