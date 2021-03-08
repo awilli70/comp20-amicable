@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Amicable Numbers</title>
+<link rel="stylesheet" href="style.css">
+<script language="javascript">
+    function checkAmicable() {
+        let output = document.getElementById("output")
+        let x = parseInt(document.getElementById("n1").value)
+        let y = parseInt(document.getElementById("n2").value)
+        if (isNaN(x) || isNan(y)) {
+            alert("Please enter both numbers.")
+            return;
+        }
+        let xFactors = factors(x)
+        let yFactors= factors(y)
+        let sumXFactors = xFactors.reduce((a, c) => c + a)
+        console.log(sumXFactors)
+        let sumYFactors = yFactors.reduce((a, c) => c + a)
+        console.log(sumYFactors)
+        let outputHTML = ""
+        if (sumXFactors === y && sumYFactors === x) {
+            outputHTML += `<p>The numbers ${x} and ${y} are amicable.</p>`
+        } else {
+            outputHTML += `<p>The numbers ${x} and ${y} are not amicable.</p>`
+        }
+        console.log(outputHTML)
+        output.innerHTML = outputHTML
+    }
+
+    function showFactors() {
+        let x = parseInt(document.getElementById("n1").value)
+        let y = parseInt(document.getElementById("n2").value)
+        if (isNaN(x) || isNan(y)) {
+            alert("Please enter both numbers.")
+            return;
+        }
+        let xFactors = factors(x)
+        let xFactStr = "[" + xFactors.join(" ") + "]"
+        let yFactors= factors(y)
+        let yFactStr = "[" + yFactors.join(" ") + "]"
+
+        alert(`Factors for ${x} are ${xFactStr} and for ${y} are ${yFactStr}`)
+    }
+
+    function factors(val) {
+        let valFactors = []
+        for (let i = 1; i <= ((val / 2)); i++) {
+            if (val % i === 0) valFactors.push(i); 
+        }
+        return valFactors;
+    }
+</script>
+</head>
+
+<body>
+    <h1>Amicable Numbers</h1>
+	<form>
+	<label for="n1">Number 1:</label> <input type="text" id="n1">
+    <label for="n2">Number 2:</label> <input type="text" id="n2">
+	<button class="b1" type="button" onclick="checkAmicable()">Check if numbers are amicable </button>
+    <button class="b1" type="button" onclick="showFactors()">Display factors</button>
+	</form>
+    <div id='output'></div>
+</body>
+</html>
